@@ -1,6 +1,6 @@
 --extra-index-url https://download.pytorch.org/whl/cu128
 
-click==8.1.7
+click>=8.1.8
 fbpca==1.0
 ffmpeg-python==0.2.0
 ffmpeg-downloader==0.4.1
