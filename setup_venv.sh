@@ -51,9 +51,10 @@ echo "This may take several minutes, especially for PyTorch with CUDA support...
 echo ""
 
 # Use uv pip to install from requirements.txt
+# --index-strategy unsafe-best-match allows checking all indexes for best version matches
+# This is needed because PyTorch index may not have all packages at exact versions
 # The --extra-index-url for PyTorch CUDA is already in requirements.txt
-# uv pip will automatically handle the --extra-index-url directive in the file
-uv pip install -r requirements.txt
+uv pip install --index-strategy unsafe-best-match -r requirements.txt
 
 echo ""
 echo "✓ All dependencies installed"
