@@ -13,6 +13,7 @@
 cd ~/autolume
 
 # Run setup script (auto-installs uv if needed)
+# This will install all dependencies needed for training (skips optional packages)
 bash setup_venv_jupyter.sh
 
 # Activate the virtual environment
@@ -124,6 +125,11 @@ python train.py [same options] --resume=./training-runs/00000-*/network-snapshot
 **"Command not found: uv"**
 - The setup script should install it automatically
 - Or manually: `curl -LsSf https://astral.sh/uv/install.sh | sh && export PATH="$HOME/.cargo/bin:$PATH"`
+
+**"Failed to build ndi-python or pyaudio"**
+- These are optional packages not needed for training
+- The setup script now uses `requirements-training.txt` which excludes them
+- If you need them later, install system libraries first (see README)
 
 **"CUDA not available"**
 - Check Vast.ai instance has GPU: `nvidia-smi`

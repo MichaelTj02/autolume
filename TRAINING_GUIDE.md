@@ -19,11 +19,13 @@ Or use the regular setup script:
 bash setup_venv.sh
 ```
 
-**Note:** If `uv` is not installed, the Jupyter script will install it automatically. Otherwise, install it manually:
-```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh
-export PATH="$HOME/.cargo/bin:$PATH"
-```
+**Note:** 
+- If `uv` is not installed, the Jupyter script will install it automatically. Otherwise, install it manually:
+  ```bash
+  curl -LsSf https://astral.sh/uv/install.sh | sh
+  export PATH="$HOME/.cargo/bin:$PATH"
+  ```
+- The setup script uses `requirements-training.txt` which excludes optional packages (`ndi-python`, `pyaudio`) that require system libraries and aren't needed for training.
 
 3. **After setup completes, activate the virtual environment**:
 ```bash

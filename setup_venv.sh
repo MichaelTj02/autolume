@@ -45,16 +45,23 @@ uv pip install --upgrade pip
 echo "✓ pip upgraded"
 echo ""
 
-# Install dependencies from requirements.txt
-echo "Installing dependencies from requirements.txt..."
+# Install dependencies from requirements-training.txt (excludes optional packages that need system libs)
+echo "Installing dependencies for training..."
 echo "This may take several minutes, especially for PyTorch with CUDA support..."
+echo "Note: Skipping ndi-python and pyaudio (require system libraries, not needed for training)"
 echo ""
 
-# Use uv pip to install from requirements.txt
+# Use requirements-training.txt which excludes ndi-python and pyaudio
 # --index-strategy unsafe-best-match allows checking all indexes for best version matches
 # This is needed because PyTorch index may not have all packages at exact versions
-# The --extra-index-url for PyTorch CUDA is already in requirements.txt
-uv pip install --index-strategy unsafe-best-match -r requirements.txt
+if [ -f requirements-training.txt ]; then
+    uv pip install --index-strategy unsafe-best-match -r requirements-training.txt
+else
+    # Fallback: install from requirements.txt but skip problematic packages
+    echo "Creating training requirements file..."
+    grep -v "ndi-python\|pyaudio" requirements.txt > requirements-training.txt
+    uv pip install --index-strategy unsafe-best-match -r requirements-training.txt
+fi
 
 echo ""
 echo "✓ All dependencies installed"
