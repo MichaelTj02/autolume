@@ -49,9 +49,9 @@ source .venv/bin/activate
 python train_wrapper.py \
     --outdir=./training-runs \
     --cfg=stylegan2 \
-    --data=~/datasets/my-dataset \
+    --data=../datasets/dataset \
     --gpus=1 \
-    --batch=4 \
+    --batch=8 \
     --gamma=10.0 \
     --resolution="(512,512)" \
     --mirror=True \
