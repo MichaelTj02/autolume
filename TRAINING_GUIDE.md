@@ -205,3 +205,6 @@ This will print the training configuration without starting training.
 - **Permission Denied**: Make scripts executable with `chmod +x setup_venv.sh`
 - **Connection Lost**: Use `screen` or `tmux` to keep training running if you disconnect
 - **Out of Disk Space**: Clean up old training runs or use `--outdir` to save to a different location with more space
+- **AttributeError: fps**: Make sure you're using `train_wrapper.py` not `train.py` for command-line training. The wrapper handles missing parameters automatically.
+- **ModuleNotFoundError: pkg_resources**: Install setuptools: `uv pip install "setuptools<65"`
+- **Resolution Parsing Error**: Always quote the resolution parameter: `--resolution="(512,512)"` not `--resolution=(512,512)`

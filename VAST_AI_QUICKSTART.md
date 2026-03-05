@@ -114,10 +114,10 @@ source .venv/bin/activate
 nvidia-smi
 
 # Test training config (dry run)
-python train.py --outdir=./test --cfg=stylegan2 --data=~/datasets/test --gpus=1 --batch=4 --gamma=10.0 --resolution=(512,512) --dry-run
+python train_wrapper.py --outdir=./test --cfg=stylegan2 --data=../datasets/test --gpus=1 --batch=4 --gamma=10.0 --resolution="(512,512)" --dry-run
 
 # Resume from checkpoint
-python train.py [same options] --resume=./training-runs/00000-*/network-snapshot-*.pkl
+python train_wrapper.py [same options] --resume=./training-runs/00000-*/network-snapshot-*.pkl
 ```
 
 ## Common Issues
@@ -142,3 +142,12 @@ python train.py [same options] --resume=./training-runs/00000-*/network-snapshot
 **"Venv not activated"**
 - You should see `(.venv)` in your prompt
 - Run: `source .venv/bin/activate`
+
+**"AttributeError: fps" or "ModuleNotFoundError: pkg_resources"**
+- Make sure you're using `train_wrapper.py` not `train.py` for command-line training
+- Install setuptools: `uv pip install "setuptools<65"`
+- The wrapper automatically handles missing parameters like `fps`
+
+**"Resolution parsing error"**
+- Always quote the resolution: `--resolution="(512,512)"` not `--resolution=(512,512)`
+- The wrapper fixes click's tuple parsing automatically

@@ -2,6 +2,12 @@
 """
 Command-line wrapper for train.py
 This allows training from command line by properly setting up queue/reply objects.
+
+Fixes:
+- Adds missing 'fps' parameter (default: 10)
+- Adds missing 'skip_preprocessing' parameter (default: True)
+- Fixes click's tuple parsing bug for --resolution parameter
+- Properly creates queue/reply objects that train.py's main() expects
 """
 
 import queue
