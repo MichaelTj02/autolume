@@ -8,10 +8,21 @@ Fixes:
 - Adds missing 'skip_preprocessing' parameter (default: True)
 - Fixes click's tuple parsing bug for --resolution parameter
 - Properly creates queue/reply objects that train.py's main() expects
+
+Environment:
+- AUTOLUME_USE_CUSTOM_OPS=0  Disable custom CUDA plugins (use reference impl). Use this
+  if plugin build fails (e.g. missing cusparse.h). Training still runs, slightly slower.
 """
 
+import os
 import queue
 import sys
+
+# Disable custom ops before any training code loads (avoids plugin build e.g. when cusparse.h is missing)
+if os.environ.get('AUTOLUME_USE_CUSTOM_OPS', '1') == '0':
+    import torch_utils.ops.params as _params
+    _params.use_custom = False
+
 from train import main
 
 if __name__ == "__main__":
