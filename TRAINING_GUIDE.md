@@ -71,17 +71,19 @@ Place your dataset in a location accessible to the training script.
 Here's a basic training command structure:
 
 ```bash
-python train.py \
+python train_wrapper.py \
     --outdir=./training-runs \
     --cfg=stylegan2 \
     --data=/path/to/your/dataset \
     --gpus=1 \
     --batch=4 \
     --gamma=10.0 \
-    --resolution=(512,512) \
+    --resolution="(512,512)" \
     --mirror=True \
     --aug=ada
 ```
+
+**Note:** Use `train_wrapper.py` instead of `train.py` for command-line training. The `train.py` script is designed to be called from the GUI interface.
 
 ### Required Parameters
 
@@ -109,14 +111,14 @@ python train.py \
 
 #### StyleGAN2 Training (512x512)
 ```bash
-python train.py \
+python train_wrapper.py \
     --outdir=./training-runs \
     --cfg=stylegan2 \
     --data=./datasets/my-dataset \
     --gpus=1 \
     --batch=4 \
     --gamma=10.0 \
-    --resolution=(512,512) \
+    --resolution="(512,512)" \
     --mirror=True \
     --aug=ada \
     --kimg=25000 \
@@ -125,28 +127,28 @@ python train.py \
 
 #### StyleGAN3-T Training (1024x1024)
 ```bash
-python train.py \
+python train_wrapper.py \
     --outdir=./training-runs \
     --cfg=stylegan3-t \
     --data=./datasets/my-dataset \
     --gpus=1 \
     --batch=4 \
     --gamma=8.2 \
-    --resolution=(1024,1024) \
+    --resolution="(1024,1024)" \
     --mirror=True \
     --aug=ada
 ```
 
 #### Fine-tuning from Pre-trained Model
 ```bash
-python train.py \
+python train_wrapper.py \
     --outdir=./training-runs \
     --cfg=stylegan2 \
     --data=./datasets/my-dataset \
     --gpus=1 \
     --batch=4 \
     --gamma=10.0 \
-    --resolution=(512,512) \
+    --resolution="(512,512)" \
     --resume=https://api.ngc.nvidia.com/v2/models/nvidia/research/stylegan2/versions/1/files/stylegan2-ffhq-512x512.pkl \
     --kimg=5000 \
     --snap=5
@@ -157,14 +159,14 @@ python train.py \
 Before starting actual training, you can test your configuration:
 
 ```bash
-python train.py \
+python train_wrapper.py \
     --outdir=./training-runs \
     --cfg=stylegan2 \
     --data=./datasets/my-dataset \
     --gpus=1 \
     --batch=4 \
     --gamma=10.0 \
-    --resolution=(512,512) \
+    --resolution="(512,512)" \
     --dry-run
 ```
 

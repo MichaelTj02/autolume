@@ -46,14 +46,14 @@ Upload your dataset to the instance:
 source .venv/bin/activate
 
 # Basic training command
-python train.py \
+python train_wrapper.py \
     --outdir=./training-runs \
     --cfg=stylegan2 \
     --data=~/datasets/my-dataset \
     --gpus=1 \
     --batch=4 \
     --gamma=10.0 \
-    --resolution=(512,512) \
+    --resolution="(512,512)" \
     --mirror=True \
     --aug=ada
 ```
