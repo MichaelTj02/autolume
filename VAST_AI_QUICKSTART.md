@@ -54,7 +54,7 @@ python train_wrapper.py \
     --batch=8 \
     --gamma=10.0 \
     --resolution="(512,512)" \
-    --mirror=True \
+    --mirror=False \
     --aug=ada
 ```
 
