@@ -51,7 +51,7 @@ python train_wrapper.py \
     --cfg=stylegan2 \
     --data=../datasets/dataset \
     --gpus=1 \
-    --batch=8 \
+    --batch=4 \
     --gamma=10.0 \
     --resolution="(512,512)" \
     --mirror=False \
