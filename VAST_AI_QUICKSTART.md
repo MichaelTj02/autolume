@@ -55,7 +55,7 @@ python train_wrapper.py \
     --gamma=10.0 \
     --resolution="(512,512)" \
     --mirror=False \
-    --aug=ada
+    --aug=ada --augpipe=blit
 ```
 
 ## Important Tips for Vast.ai
