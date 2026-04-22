@@ -358,7 +358,7 @@ def main(queue, reply):
             c.loss_kwargs.G_top_k_frac = 0.5
 
         augpipe_specs = {
-            'blit': dict(xflip=1, rotate90=1, xint=1),
+            'blit': dict(xflip=1, rotate90=0, xint=1),
             'geom': dict(scale=1, rotate=1, aniso=1, xfrac=1),
             'color': dict(brightness=1, contrast=1, lumaflip=1, hue=1, saturation=1),
             'filter': dict(imgfilter=1),

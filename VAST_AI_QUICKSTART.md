@@ -49,7 +49,7 @@ source .venv/bin/activate
 python train_wrapper.py \
     --outdir=./training-runs \
     --cfg=stylegan2 \
-    --data=../datasets/dataset \
+    --data=./dataset \
     --gpus=1 \
     --batch=4 \
     --gamma=10.0 \
